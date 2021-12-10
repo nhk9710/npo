@@ -1,40 +1,46 @@
 <template>
   <div>
     <div>
-      <header >
-        <div class="flex justify-end">
-          <span><q-img :src="url" style="width: 32px; height: 32px" /></span>
-          <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
-          <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
-          <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
-        </div>
-        <div class="flex justify-between q-mb-md">
-          <div class="npoLeft"style="border: 1px solid black">
-            <q-img :src="url" style="width: 125px; height: 75px" />
-          </div>
 
-            <div class="npoMiddle" style="display: flex; align-items: center">
-              <span class="headerNav">센터소개</span>
-              <span class="headerNav">센터소식</span>
-              <span class="headerNav">NPO정보</span>
-              <span class="headerNav">아카이브</span>
-              <span style="font-weight: bolder; font-size: large;">시설이용</span>
+        <header >
+          <div class="headerInBox">
+            <div class="flex justify-end">
+              <span><q-img :src="url" style="width: 32px; height: 32px" /></span>
+              <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
+              <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
+              <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
             </div>
+            <div class="flex justify-between q-mb-md">
+              <div class="npoLeft"style="border: 1px solid black">
+                <q-img :src="url" style="width: 125px; height: 75px" />
+              </div>
 
-          <div class="npoRight" style="display: flex; align-items: center">
-            <span style="margin-right: 10px">로그인</span>
-            <span>/</span>
-            <span style="margin-left: 10px">회원가입</span>
+              <div class="npoMiddle" style="display: flex; align-items: center">
+                <span class="headerNav">센터소개</span>
+                <span class="headerNav">센터소식</span>
+                <span class="headerNav">NPO정보</span>
+                <span class="headerNav">아카이브</span>
+                <span style="font-weight: bolder; font-size: large;">시설이용</span>
+              </div>
+
+              <div class="npoRight" style="display: flex; align-items: center">
+                <span style="margin-right: 10px">로그인</span>
+                <span>/</span>
+                <span style="margin-left: 10px">회원가입</span>
+              </div>
+
+
+
+              <div class="npoRight" style="display: flex; align-items: center">
+                <span class="text-weight-bold" style="color: #21BA45">Search</span>
+                <q-icon name="search" size="30px" color="green-4" />
+              </div>
+            </div>
           </div>
 
+        </header>
 
 
-          <div class="npoRight" style="display: flex; align-items: center">
-            <span class="text-weight-bold" style="color: #21BA45">Search</span>
-            <q-icon name="search" size="30px" color="green-4" />
-          </div>
-        </div>
-      </header>
 
 <!-- 헤더 끝 -->
       <div>
@@ -394,7 +400,7 @@ export default {
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .footerInfo{
   margin-left: 30px;
@@ -428,6 +434,10 @@ export default {
   color: #b3b0b0;
   margin-left: 20px;
 }
+.headerInBox{
+  width: 100%;
+  max-width: 1200px;
+}
 
 
 li{
@@ -440,8 +450,15 @@ q-separator{
 
 header{
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
+  position: sticky;
+  padding-top: 20px;
+  top: -20px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background: white;
+  border-bottom: 1px solid black;
 }
 footer{
   background: #333333;
