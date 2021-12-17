@@ -15,12 +15,19 @@
                 <q-img :src="url" style="width: 125px; height: 75px" />
               </div>
 
-              <div class="npoMiddle" style="display: flex; align-items: center">
+              <div class="npoMiddle" @mouseleave="centerMouseleave" @mouseover="centerMouseover" style="display: flex; align-items: center">
                 <span class="headerNav">센터소개</span>
                 <span class="headerNav">센터소식</span>
                 <span class="headerNav">NPO정보</span>
                 <span class="headerNav">아카이브</span>
-                <span style="font-weight: bolder; font-size: large;">시설이용</span>
+                <span style="font-weight: bolder; font-size: large;">공간대관</span>
+
+                <ul class="hidden hiddenMenu" @mouseleave="centerListleave" @mouseover="centerListover">
+                  <li>기관소개</li>
+                  <li>CI소개</li>
+                  <li>일하시는 분</li>
+                  <li>찾아오시는 길</li>
+                </ul>
               </div>
 
               <div class="npoRight" style="display: flex; align-items: center">
@@ -80,7 +87,7 @@
                   <q-item-label>센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>2021 그룹워킹데이</q-item-label>
+                  <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-item-label caption>2021-12-07</q-item-label>
@@ -94,7 +101,7 @@
                   <q-item-label>센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>2021 그룹워킹데이</q-item-label>
+                  <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-item-label caption>2021-12-07</q-item-label>
@@ -108,7 +115,7 @@
                   <q-item-label >센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>2021 그룹워킹데이</q-item-label>
+                  <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-item-label caption>2021-12-07</q-item-label>
@@ -122,7 +129,7 @@
                   <q-item-label>센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>2021 그룹워킹데이</q-item-label>
+                  <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-item-label caption>2021-12-07</q-item-label>
@@ -136,7 +143,7 @@
                   <q-item-label>센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>2021 그룹워킹데이</q-item-label>
+                  <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-item-label caption>2021-12-07</q-item-label>
@@ -167,7 +174,7 @@
                     <q-item-label>NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>2021 그룹워킹데이</q-item-label>
+                    <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption>2021-12-07</q-item-label>
@@ -181,7 +188,7 @@
                     <q-item-label>구인</q-item-label>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>2021 그룹워킹데이</q-item-label>
+                    <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption>2021-12-07</q-item-label>
@@ -195,7 +202,7 @@
                     <q-item-label >구인</q-item-label>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>2021 그룹워킹데이</q-item-label>
+                    <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption>2021-12-07</q-item-label>
@@ -209,7 +216,7 @@
                     <q-item-label>NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>2021 그룹워킹데이</q-item-label>
+                    <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption>2021-12-07</q-item-label>
@@ -223,7 +230,7 @@
                     <q-item-label>NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>2021 그룹워킹데이</q-item-label>
+                    <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption>2021-12-07</q-item-label>
@@ -260,11 +267,11 @@
             <div class=" q-mt-lg" style="display: flex; margin-left: 20px; justify-content: space-between">
               <div class="q-mr-lg">
                 <q-img :src="url" style="width: 250px; height: 350px;" />
-                <p>커피와 영화가 만나는 곳 빈스로드</p>
+                <p class="text-weight-bold" style="font-size: larger">커피와 영화가 만나는 곳 빈스로드</p>
               </div>
               <div>
                 <q-img :src="url" style="width: 250px; height: 350px;"/>
-                <p>성북청년시민회 한해살이 2021-<br/>우리가 서로의 비빌언덕이 될 수...</p>
+                <p class="text-weight-bold" style="font-size: larger">성북청년시민회 한해살이 2021-<br/>우리가 서로의 비빌언덕이 될 수...</p>
               </div>
             </div>
             </div>
@@ -328,15 +335,18 @@
         <q-checkbox v-model="val"><span style="text-decoration: underline; color: #11b466">마케팅 정보 수신</span>에 동의합니다.</q-checkbox>
       </div>
       <div class="flex justify-center">
-        <div class="flex justify-between" style="width: 30%;">
+        <div style="width: 50%; display: flex; justify-content: center">
 
-          <q-input outlined square dense placeholder="이메일" />
+          <q-input class="q-mr-md" outlined v-if="val" style="width: 30%" square dense placeholder="이메일" />
+          <q-input class="q-mr-md" outlined v-else-if="val==false" style="width: 30%" square dense readonly placeholder="이메일" />
 
-          <q-input outlined square dense placeholder="이름" />
+          <q-input class="q-mr-md" outlined v-if="val" style="width: 10%" square dense placeholder="이름" />
+          <q-input class="q-mr-md" outlined v-else-if="val==false" style="width: 10%" square dense readonly placeholder="이름" />
 
 
-          <q-btn class="q-mb-lg" style="background: #666666; border-radius: 0; color: white">구독하기</q-btn>
-          <q-badge class="q-gutter-xs" color="red" rounded floating />
+          <q-btn class="q-mb-lg" style="background: #666666; border-radius: 0; color: white"><span style="text-align: center" class="text-weight-bold">구독하기</span>
+            <q-badge rounded color="white" class="q-mb-lg q-ml-lg" />
+          </q-btn>
         </div>
       </div>
       <span style="text-decoration: underline; font-weight: bold; color: #11b466">지난 뉴스레터 보기</span>
@@ -379,6 +389,21 @@ export default {
         '8'
       ]
     }
+  },
+  methods:{
+    centerMouseover: function (){
+      ('.hiddenMenu').stop().(200);
+    },
+    centerMouseleave: function (){
+      ('.hiddenMenu').stop().slideUP(200);
+    },
+    centerListleave: function (){
+      ('.hiddenMenu').stop().slideUP(200);
+    },
+    centerListover: function (){
+      ('.hiddenMenu').stop().slideDown(200);
+    },
+
   }
 }
 </script>
@@ -411,8 +436,6 @@ export default {
   background: #f5f5f5;
   text-align: center;
 }
-.centerList{
-}
 .centerNews{
   color: #11b466;
   font-weight: bold;
@@ -438,8 +461,6 @@ export default {
   width: 100%;
   max-width: 1200px;
 }
-
-
 li{
   list-style: none;
 }
