@@ -15,19 +15,13 @@
                 <q-img :src="url" style="width: 125px; height: 75px" />
               </div>
 
-              <div class="npoMiddle" @mouseleave="centerMouseleave" @mouseover="centerMouseover" style="display: flex; align-items: center">
+              <div class="npoMiddle" @click="isShow = !isShow" style="display: flex; align-items: center">
                 <span class="headerNav">센터소개</span>
                 <span class="headerNav">센터소식</span>
                 <span class="headerNav">NPO정보</span>
                 <span class="headerNav">아카이브</span>
                 <span style="font-weight: bolder; font-size: large;">공간대관</span>
 
-                <ul class="hidden hiddenMenu" @mouseleave="centerListleave" @mouseover="centerListover">
-                  <li>기관소개</li>
-                  <li>CI소개</li>
-                  <li>일하시는 분</li>
-                  <li>찾아오시는 길</li>
-                </ul>
               </div>
 
               <div class="npoRight" style="display: flex; align-items: center">
@@ -44,47 +38,42 @@
               </div>
             </div>
           </div>
-
         </header>
-
+      <transition name="slide">
+        <ul class="hiddenMenu" style="width: 1200px; background: #b0b0b0; position: relative; z-index: 999; margin: 0 auto" v-if="isShow">
+          <li>기관소개</li>
+          <li>CI소개</li>
+          <li>일하시는 분</li>
+          <li>찾아오시는 길</li>
+        </ul>
+      </transition>
 
 
 <!-- 헤더 끝 -->
-      <div>
-        <q-carousel
-          animated
-          v-model="slide"
-          arrows
-          navigation
-          infinite
-          style="height: 154px"
-        >
-          <q-carousel-slide :name="1" :img-src="slideUrl1" />
-          <q-carousel-slide :name="2" :img-src="slideUrl2"/>
-        </q-carousel>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <VueSlickCarousel style="width: 1200px;" v-bind="settings">
+          <div><q-img :src="slideUrl1"/></div>
+          <div><q-img :src="slideUrl2"/></div>
+        </VueSlickCarousel>
+
       </div>
 
 
       <div class="mainBody">
-
         <div class="top flex justify-between q-mt-xl">
 
+          <div style="width: 48.5%">
+            <div style="display: flex; justify-content: space-between">
+              <p class="text-h5 text-weight-bold">센터소식</p>
+              <p class="text-weight-bold text-grey" style="text-align: right">더보기<q-icon name="add" color="purple-9" size="30px" /></p>
+            </div>
 
-          <div style="width: 48%">
-            <q-item>
-              <q-item-section>
-                <q-item-label style="font-weight: bold" class="text-h5">센터소식</q-item-label>
-              </q-item-section>
-              <q-item-section side>
-                <q-item-label caption>더보기<q-icon name="add" color="green-4" size="30px" /></q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-separator color="green-4" size="2px" inset/>
+            <q-separator color="green-4" size="2px"/>
 
             <q-list class="centerList q-list--dense">
               <q-item class="centerNews">
                 <q-item-section>
-                  <q-item-label>센터소식</q-item-label>
+                  <q-item-label class="text-weight-bold">센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -98,7 +87,7 @@
 
               <q-item class="centerNews">
                 <q-item-section>
-                  <q-item-label>센터소식</q-item-label>
+                  <q-item-label class="text-weight-bold">센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -112,7 +101,7 @@
 
               <q-item class="centerNews">
                 <q-item-section>
-                  <q-item-label >센터소식</q-item-label>
+                  <q-item-label class="text-weight-bold">센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -126,7 +115,7 @@
 
               <q-item class="centerNews">
                 <q-item-section>
-                  <q-item-label>센터소식</q-item-label>
+                  <q-item-label class="text-weight-bold">센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -140,7 +129,7 @@
 
               <q-item class="centerNews">
                 <q-item-section>
-                  <q-item-label>센터소식</q-item-label>
+                  <q-item-label class="text-weight-bold">센터소식</q-item-label>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -157,21 +146,20 @@
 
 
 
-          <div style="width: 48%">
-            <q-item>
-              <q-item-section>
-                <q-item-label style="font-weight: bold" class="text-h5">NPO소식</q-item-label>
-              </q-item-section>
-              <q-item-section side>
-                <q-item-label caption>더보기<q-icon name="add" color="purple-9" size="30px" /></q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-separator color="purple-9" size="2px" inset/>
+          <div style="width: 48.5%">
+            <div style="display: flex; justify-content: space-between">
+              <p class="text-h5 text-weight-bold">NPO소식</p>
+              <p class="text-weight-bold text-grey" style="text-align: right">더보기<q-icon name="add" color="purple-9" size="30px" /></p>
+            </div>
+
+            <q-separator color="green-4" size="2px"/>
+
+
             <div>
               <q-list class="npoList q-list--dense">
                 <q-item class="npoNews">
                   <q-item-section>
-                    <q-item-label>NPO소식</q-item-label>
+                    <q-item-label class="text-weight-bold">NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
                     <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -185,7 +173,7 @@
 
                 <q-item class="npoNews">
                   <q-item-section>
-                    <q-item-label>구인</q-item-label>
+                    <q-item-label class="text-weight-bold">구인</q-item-label>
                   </q-item-section>
                   <q-item-section>
                     <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -199,7 +187,7 @@
 
                 <q-item class="npoNews">
                   <q-item-section>
-                    <q-item-label >구인</q-item-label>
+                    <q-item-label class="text-weight-bold">구인</q-item-label>
                   </q-item-section>
                   <q-item-section>
                     <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -213,7 +201,7 @@
 
                 <q-item class="npoNews">
                   <q-item-section>
-                    <q-item-label>NPO소식</q-item-label>
+                    <q-item-label class="text-weight-bold">NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
                     <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -227,7 +215,7 @@
 
                 <q-item class="npoNews">
                   <q-item-section>
-                    <q-item-label>NPO소식</q-item-label>
+                    <q-item-label class="text-weight-bold">NPO소식</q-item-label>
                   </q-item-section>
                   <q-item-section>
                     <q-item-label class="text-weight-bold" style="color: black">2021 그룹워킹데이</q-item-label>
@@ -241,30 +229,22 @@
 
               </q-list>
             </div>
-
           </div>
         </div>
 
 <!--  #############구분선######################      -->
 
-        <div class="flex justify-between q-mb-lg" style="">
-          <div style="width: 48%;  display: flex; flex-wrap: wrap;  ">
-            <div>
-              <div class="q-ml-lg">
-                <q-item>
-                  <q-item-section>
-                    <q-item-label style="font-weight: bold" class="text-h5">아카이브</q-item-label>
-                  </q-item-section>
-                  <q-item-section side>
-                    <q-item-label caption>더보기<q-icon name="add" color="green-4" size="30px" /></q-item-label>
-                  </q-item-section>
-                </q-item>
-
-                <q-separator color="green-4" size="2px" inset/>
+        <div class="flex justify-between q-mb-lg" >
+          <div style="width: 48.5%">
+              <div style="display: flex; justify-content: space-between">
+                <p class="text-h5 text-weight-bold">아카이브</p>
+                <p class="text-weight-bold text-grey" style="text-align: right">더보기<q-icon name="add" color="purple-9" size="30px" /></p>
               </div>
 
+            <q-separator color="green-4" size="2px"/>
 
-            <div class=" q-mt-lg" style="display: flex; margin-left: 20px; justify-content: space-between">
+
+            <div class=" q-mt-lg" style="display: flex; justify-content: space-between">
               <div class="q-mr-lg">
                 <q-img :src="url" style="width: 250px; height: 350px;" />
                 <p class="text-weight-bold" style="font-size: larger">커피와 영화가 만나는 곳 빈스로드</p>
@@ -274,8 +254,6 @@
                 <p class="text-weight-bold" style="font-size: larger">성북청년시민회 한해살이 2021-<br/>우리가 서로의 비빌언덕이 될 수...</p>
               </div>
             </div>
-            </div>
-
 
 
               <div style=" width: 100%">
@@ -286,22 +264,14 @@
                 <div  style="background: #615097; padding: 15px 15px;">
                   <span style="color: white; font-weight: bold; font-size: larger">동북권 NPO센터의 이용 가능한 시설들을 알려드립니다.  </span>
                 </div>
-
-
               </div>
           </div>
 
 
-          <div style="width: 48%">
-            <q-item>
-              <q-item-section>
-                <q-item-label><q-img
+          <div style="width: 48.5%">
+            <q-img
                   :src="url"
-                  style="height: 750px; max-width: 560px"
-                ></q-img></q-item-label>
-              </q-item-section>
-
-            </q-item>
+                 />
           </div>
         </div>
 
@@ -323,6 +293,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="newsBox q-pt-xl q-pb-xl">
       <span class="text-h5 text-weight-bold">뉴스레터를 받아보세요</span>
       <q-separator class="q-mb-sm" color="#f5f5f5" style="background: #f5f5f5" />
@@ -343,12 +315,13 @@
           <q-input class="q-mr-md" outlined v-if="val" style="width: 10%" square dense placeholder="이름" />
           <q-input class="q-mr-md" outlined v-else-if="val==false" style="width: 10%" square dense readonly placeholder="이름" />
 
-
-          <q-btn class="q-mb-lg" style="background: #666666; border-radius: 0; color: white"><span style="text-align: center" class="text-weight-bold">구독하기</span>
-            <q-badge rounded color="white" class="q-mb-lg q-ml-lg" />
+          <q-btn class="q-mb-lg" style="background: #666666; border-radius: 0; color: white"><span style="text-align: center" class="text-weight-bold q-ml-lg">구독하기</span>
+            <q-badge rounded color="white" class="q-mb-lg q-ml-md" />
           </q-btn>
         </div>
       </div>
+
+
       <span style="text-decoration: underline; font-weight: bold; color: #11b466">지난 뉴스레터 보기</span>
     </div>
     <footer class="footer">
@@ -359,7 +332,7 @@
 
         <div class="footerInfo">
           <span>이용약관 / <a href="#" style="color: yellow; text-decoration: none">개인정보처리방침</a></span><br/>
-          <span style="color: #666666">대구광역시 북구 산격동 505-7 소프트웨어벤처타워 904호</span><br/>
+          <span style="color: #666666">대구광역시 북구 산격동 505-7 소프트웨어벤처타워 904호 / 대충 전화번호 / 대충 팩스 / 대충 이메일</span><br/>
           <span style="color: #666666">©Copyright2021Deagu SOFTWEARTOWER.All rights reserved.</span>
         </div>
       </div>
@@ -369,15 +342,32 @@
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 export default {
   name: 'PageIndex',
+  components: {
+    VueSlickCarousel
+  },
   data(){
     return {
-      slideUrl1: 'https://placeimg.com/1200/154/nature',
-      slideUrl2: 'https://placeimg.com/1200/154/animals',
+      slideUrl1: 'https://placeimg.com/1200/160/nature',
+      slideUrl2: 'https://placeimg.com/1200/160/animals',
       url: 'https://placeimg.com/560/750/nature',
       val: 'true',
+      isShow:false,
       slide: 1,
+      settings:{
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        focusOnSelect: true,
+        arrows: true,
+        dots: true,
+        centerMode: true,
+        centerPadding: '200px'
+      },
       transitions:[
         '1',
         '2',
@@ -390,21 +380,6 @@ export default {
       ]
     }
   },
-  methods:{
-    centerMouseover: function (){
-      ('.hiddenMenu').stop().(200);
-    },
-    centerMouseleave: function (){
-      ('.hiddenMenu').stop().slideUP(200);
-    },
-    centerListleave: function (){
-      ('.hiddenMenu').stop().slideUP(200);
-    },
-    centerListover: function (){
-      ('.hiddenMenu').stop().slideDown(200);
-    },
-
-  }
 }
 </script>
 
@@ -414,10 +389,59 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .top{
   margin-bottom: 20px;
 }
+.slider .slick-list{
+  margin:0 -20px;
+  padding: 0 220px;
+}
+.slick-slide {
+  margin: 0 20px;
+}
+.slick-track {
+  margin-left: auto;
+  margin-right: auto;
+}
+.slider{
+  position: relative;
+}
+.slick-dots li button::before{
+  color: grey;
+}
+.slick-dots li.slick-active button::before{
+  color: green;
+}
+.slide-enter-active{
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+.slide-leave-active {
+  -moz-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+.slide-enter-to, slide-leave {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.slide-enter, .slide-leave-to {
+  overflow: hidden;
+  max-height: 0;
+}
+
 .footerbox{
   max-width: 1200px;
   width: 100%;
@@ -430,8 +454,6 @@ export default {
 .footerInfo{
   margin-left: 30px;
 }
-
-
 .newsBox{
   background: #f5f5f5;
   text-align: center;
@@ -439,9 +461,6 @@ export default {
 .centerNews{
   color: #11b466;
   font-weight: bold;
-}
-
-.npoList{
 }
 .npoNews{
   color: #615097;
