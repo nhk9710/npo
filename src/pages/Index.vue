@@ -1,30 +1,75 @@
 <template>
+
   <div>
     <div>
 
         <header >
           <div class="headerInBox">
-            <div class="flex justify-end">
+            <div class="flex justify-end q-mb-0">
               <span><q-img :src="url" style="width: 32px; height: 32px" /></span>
               <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
               <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
               <span style="margin-left: 20px"><q-img :src="url" style="width: 32px; height: 32px" /></span>
             </div>
             <div class="flex justify-between q-mb-md">
-              <div class="npoLeft"style="border: 1px solid black">
+              <div class="npoLeft">
                 <q-img :src="url" style="width: 125px; height: 75px" />
               </div>
 
-              <div class="npoMiddle" @click="isShow = !isShow" style="display: flex; align-items: center">
-                <span class="headerNav">센터소개</span>
+              <div class="npoMiddle" @click="isShow = !isShow" style="display: flex; align-items: flex-end">
+<!--                <span class="headerNav">센터소개</span>
                 <span class="headerNav">센터소식</span>
                 <span class="headerNav">NPO정보</span>
-                <span class="headerNav">아카이브</span>
-                <span style="font-weight: bolder; font-size: large;">공간대관</span>
+                <span class="headerNav">아카이브</span>-->
+                <ul class="header_gnb">
+                  <li class="text-weight-bold text-h6" style="position: relative; float: left;">센터소개
+                  <ul class="header_submenu" style="display: none; opacity: 1">
+                    <li>기관소개</li>
+                    <li>CI소개</li>
+                    <li>일하는 사람들</li>
+                    <li>찾아오시는 길</li>
+                  </ul>
+                  </li>
+                  <li class="header_menu text-weight-bold text-h6">센터소식
+                    <ul class="header_submenu" style="display: none; opacity: 1">
+                      <li>센터소식</li>
+                      <li>지원사업</li>
+                    </ul>
+                  </li>
+                  <li class="header_menu text-weight-bold text-h6">NPO정보
+                    <ul class="header_submenu" style="display: none; opacity: 1">
+                      <li>NPO소식</li>
+                      <li>NPO즐겨찾기</li>
+                    </ul>
+                  </li>
+                  <li class="header_menu text-weight-bold text-h6">아카이브
+                    <transition name="slide">
+                      <ul class="header_submenu" style="display: none; opacity: 1">
+                        <li>센터발간자료</li>
+                        <li>동북권 아카이브</li>
+                        <li>-강북</li>
+                        <li>-노원</li>
+                        <li>-도봉</li>
+                        <li>-성북</li>
+                        <li>-중랑</li>
+                        <li>타기관NPO자료</li>
+                      </ul>
+                    </transition>
+
+                  </li>
+                  <li class="header_menu text-weight-bold text-h6">공간대관
+                    <ul class="header_submenu" style="display: none; opacity: 1">
+                      <li>대관안내</li>
+                      <li>대관현황</li>
+                      <li>사용신청 안내</li>
+                      <li>사용 신청서 작성</li>
+                    </ul>
+                  </li>
+                </ul>
 
               </div>
 
-              <div class="npoRight" style="display: flex; align-items: center">
+              <div class="npoRight" style="display: flex; align-items: flex-end">
                 <span style="margin-right: 10px">로그인</span>
                 <span>/</span>
                 <span style="margin-left: 10px">회원가입</span>
@@ -32,29 +77,41 @@
 
 
 
-              <div class="npoRight" style="display: flex; align-items: center">
+              <div class="npoRight" style="display: flex; align-items: flex-end">
                 <span class="text-weight-bold" style="color: #21BA45">Search</span>
                 <q-icon name="search" size="30px" color="green-4" />
               </div>
             </div>
           </div>
         </header>
-      <transition name="slide">
-        <ul class="hiddenMenu" style="width: 1200px; background: #b0b0b0; position: relative; z-index: 999; margin: 0 auto" v-if="isShow">
-          <li>기관소개</li>
-          <li>CI소개</li>
-          <li>일하시는 분</li>
-          <li>찾아오시는 길</li>
-        </ul>
-      </transition>
 
 
 <!-- 헤더 끝 -->
       <div style="display: flex; justify-content: center; align-items: center;">
-        <VueSlickCarousel style="width: 1200px;" v-bind="settings">
+<!--        <VueSlickCarousel style="width: 1200px;" v-bind="settings">
           <div><q-img :src="slideUrl1"/></div>
           <div><q-img :src="slideUrl2"/></div>
-        </VueSlickCarousel>
+        </VueSlickCarousel>-->
+        <swiper class="swiper" :options="swiperOption">
+          <swiper-slide><q-img :src="slideUrl1"/></swiper-slide>
+          <swiper-slide><q-img :src="slideUrl2"/></swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
+
+      </div>
+      <div id="example-3">
+        <button @click="show = !show">
+          Toggle
+        </button>
+        <transition
+          name="custom-classes-transition"
+          enter-active-class="animated tada"
+          leave-active-class="animated bounceOutRight"
+        >
+          <p v-if="show">hello</p>
+        </transition>
 
       </div>
 
@@ -346,10 +403,22 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+import Vue from "vue";
+new Vue({
+  el:'#example-3',
+  data: {
+    show: true
+  }
+})
+
 export default {
   name: 'PageIndex',
   components: {
-    VueSlickCarousel
+    VueSlickCarousel,
+    Swiper,
+    SwiperSlide
   },
   data(){
     return {
@@ -357,6 +426,19 @@ export default {
       slideUrl2: 'https://placeimg.com/1200/160/animals',
       url: 'https://placeimg.com/560/750/nature',
       val: 'true',
+      swiperOption: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
       isShow:false,
       slide: 1,
       settings:{
@@ -379,7 +461,11 @@ export default {
         '8'
       ]
     }
+
   },
+
+
+
 }
 </script>
 
@@ -417,20 +503,20 @@ export default {
   -webkit-transition-duration: 1s;
   -o-transition-duration: 1s;
   transition-duration: 1s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 .slide-leave-active {
-  -moz-transition-duration: 1s;
-  -webkit-transition-duration: 1s;
-  -o-transition-duration: 1s;
-  transition-duration: 1s;
-  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -moz-transition-duration: 2s;
+  -webkit-transition-duration: 2s;
+  -o-transition-duration: 2s;
+  transition-duration: 2s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 .slide-enter-to, slide-leave {
   max-height: 500px;
@@ -441,7 +527,26 @@ export default {
   overflow: hidden;
   max-height: 0;
 }
-
+.header_gnb{
+  float: left;
+  margin-bottom: 0;
+}
+.header_menu{
+  position: relative;
+  float: left;
+  margin-left: 68px;
+}
+.header_menu::before{
+  content: '';
+  top: 50%;
+  left: -34px;
+  position: absolute;
+  width: 1px;
+  height: 14px;
+  margin-top: -7px;
+  background: #CCCCCC;
+  transform: rotate(45deg);
+}
 .footerbox{
   max-width: 1200px;
   width: 100%;
@@ -466,26 +571,26 @@ export default {
   color: #615097;
   font-weight: bold;
 }
-.headerNav{
-  font-weight: bolder;
-  font-size: large;
-  margin-right: 20px;
-}
-.headerNav::after{
-  content: "/";
-  color: #b3b0b0;
-  margin-left: 20px;
-}
 .headerInBox{
   width: 100%;
   max-width: 1200px;
 }
 li{
+  display: list-item;
   list-style: none;
 }
 
 q-separator{
   margin-top: 0;
+}
+q-separator::before{
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background: #009b4e;
 }
 
 header{
@@ -498,7 +603,7 @@ header{
   display: flex;
   justify-content: center;
   background: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #b0b0b0;
 }
 footer{
   background: #333333;

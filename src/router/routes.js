@@ -4,7 +4,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/Index.vue') },
+      { path:'3dEmoji', component: () => import('pages/3dEmoji.vue'), name: "3dEmoji"}
     ]
   },
 

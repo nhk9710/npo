@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "aos": "^2.3.4",
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
     "quasar": "^1.0.0",
-    "swiper": "^7.3.3",
+    "swiper": "^5.3.7",
     "vue-awesome-swiper": "^4.1.1",
     "vue-slick-carousel": "^1.0.6"
   },
