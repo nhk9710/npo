@@ -4,7 +4,15 @@
   </div>
 </template>
 <script>
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 export default {
-  name: 'App'
+  name: 'App',
+  mounted() {
+    AOS.init({
+      duration:500,
+      delay:50
+    });
+  }
 }
 </script>
