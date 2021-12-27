@@ -1,6 +1,7 @@
 <template>
-  <div id="main">
-  <div class="All-box scroll-y" v-scroll:#main="handleScroll" style="max-height: calc(100vh - 50px)" >
+  <div id="app">
+    <main class="sticky-container"  ref="sticky-container">
+  <div class="All-box sticky" >
     <div class="First-box">
       <div class="flex justify-between q-pt-md q-mr-lg q-ml-lg">
         <q-img src="https://d17v9ds8p1uxd3.cloudfront.net/img_main/Eyes.svg?versionId=xgP4ORkrWUfzByergsTzIuFt6mIjt8UO" width="2vw" />
@@ -9,11 +10,11 @@
       </div>
       <div class="relative-position">
         <h1 class="q-header text-weight-bold q-mb-lg" style="position: absolute; z-index: 1">emoj!</h1>
-        <div class="emoji-set1">
-          <q-img id="hornSmile" class="em1" src="https://d17v9ds8p1uxd3.cloudfront.net/img_emoji/emoji-1.png?versionId=vuOEA43TMXMGRIQtT7v30EhvrgITrb61"
+        <div class="emoji-set1 slide-container">
+          <q-img ref="sl1" class="slide" src="https://d17v9ds8p1uxd3.cloudfront.net/img_emoji/emoji-1.png?versionId=vuOEA43TMXMGRIQtT7v30EhvrgITrb61"
                  style="width: 30vw; z-index: 2"
           />
-          <q-img id="nerd" class="em2" src="https://d17v9ds8p1uxd3.cloudfront.net/img_emoji/emoji-4.png?versionId=IuEBrCtmDJzsy.tfc8xnGOnYEFrpJZQ9"
+          <q-img src="https://d17v9ds8p1uxd3.cloudfront.net/img_emoji/emoji-4.png?versionId=IuEBrCtmDJzsy.tfc8xnGOnYEFrpJZQ9"
                  style="width: 31vw; z-index: 2"
           />
         </div>
@@ -255,24 +256,6 @@
       </div>
     </div>
 
-    <div class="sticky-container" ref="sticky-container">
-      <div class="sticky">
-        <div class="slide-container">
-          <div class="slide" ref="sl1">
-            <div class="slide-big-text">
-              <p>안녕하세요</p>
-              <h1>하이루</h1>
-            </div>
-          </div>
-          <div class="scdown" ref="scdown">
-            <div class="scdown-text">
-              아래로 스크롤하세요.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 <!-- 푸터박스 시작   -->
     <div class="footerBox">
       <div class="footerLeft">
@@ -318,7 +301,10 @@
     </div>
 
   </div>
+
+    </main>
   </div>
+
 </template>
 
 <script>
@@ -334,7 +320,7 @@ const def = {
     sl1: {
       top: 500,
       bottom: 1900,
-      topStyle:{
+      topStyle: {
         opacity: 0,
         translateY: -60
       },
@@ -352,16 +338,70 @@ const def = {
       bottomStyle: {
         opacity: 0
       }
+    },
+    sl2: {
+      top: 1900,
+      bottom: 3200,
+      topStyle: {
+        opacity: 0,
+        translateY: 0
+      },
+      bottomStyle: {
+        opacity: 0,
+        translateY: 0
+      }
+    },
+    sl3: {
+      top: 3300,
+      bottom: 4600,
+      topStyle: {
+        opacity: 0
+      },
+      bottomStyle: {
+        opacity: 0
+      }
+    },
+    wave: {
+      top: 0,
+      bottom: 7100,
+      topStyle: {
+        opacity: 0,
+        translateY: 300
+      },
+      bottomStyle: {
+        opacity: 0,
+        translateY: 0
+      }
+    },
+    sl4: {
+      top: 4700,
+      bottom: 6000,
+      topStyle: {
+        opacity: 0
+      },
+      bottomStyle: {
+        opacity: 0
+      }
+    },
+    sl5: {
+      top: 6100,
+      bottom: 9000,
+      topStyle: {
+        opacity: 0
+      },
+      bottomStyle: {
+        opacity: 0
+      }
     }
   },
   animations: {
     sl1: [
       {
-        top:500,
+        top: 500,
         bottom: 1900,
         easing: midSlow,
         styles: {
-          translateY: {
+          translateX: {
             topValue: 60,
             bottomValue: -60
           }
@@ -379,7 +419,7 @@ const def = {
         }
       },
       {
-        top:1400,
+        top: 1400,
         bottom: 1900,
         easing: easeIn,
         styles: {
@@ -396,9 +436,170 @@ const def = {
         bottom: 1000,
         easing: easeIn,
         styles: {
-          opacity:{
-            topValue:1,
+          opacity: {
+            topValue: 1,
             bottomValue: 0
+          }
+        }
+      }
+    ],
+    sl2: [
+      {
+        top: 1900,
+        bottom: 3200,
+        easing: midSlow,
+        styles: {
+          scale: {
+            topValue: 0.5,
+            bottomValue: 2
+          }
+        }
+      },
+      {
+        top: 1900,
+        bottom: 2500,
+        easing: ease,
+        styles: {
+          opacity: {
+            topValue: 0,
+            bottomValue: 1
+          }
+        }
+      },
+      {
+        top: 2600,
+        bottom: 3200,
+        easing: easeIn,
+        styles: {
+          opacity: {
+            topValue: 1,
+            bottomValue: 0
+          }
+        }
+      }
+    ],
+    sl3: [
+      {
+        top: 3300,
+        bottom: 4600,
+        easing: midSlow,
+        styles: {
+          translateY: {
+            topValue: 60,
+            bottomValue: -60
+          }
+        }
+      },
+      {
+        top: 3300,
+        bottom: 3900,
+        easing: ease,
+        styles: {
+          opacity: {
+            topValue: 0,
+            bottomValue: 1
+          }
+        }
+      },
+      {
+        top: 4000,
+        bottom: 4600,
+        easing: easeIn,
+        styles: {
+          opacity: {
+            topValue: 1,
+            bottomValue: 0
+          }
+        }
+      }
+    ],
+    wave: [
+      {
+        top: 0,
+        bottom: 7100,
+        easing: ease,
+        styles: {
+          translateY: {
+            topValue: 200,
+            bottomValue: 0
+          },
+          opacity: {
+            topValue: 0,
+            bottomValue: 1
+          },
+          scale:{
+            topValue: 1,
+            bottomValue: 3
+          }
+        }
+      },
+      {
+        top: 0,
+        bottom: 7100,
+        easing: easeIn,
+        styles: {
+          opacity: {
+            topValue: 1,
+            bottomValue: 0
+          }
+        }
+      }
+    ],
+    sl4: [
+      {
+        top: 4700,
+        bottom: 6000,
+        easing: midSlow,
+        styles: {
+          translateY: {
+            topValue: 60,
+            bottomValue: -60
+          }
+        }
+      },
+      {
+        top: 4700,
+        bottom: 5300,
+        easing: ease,
+        styles: {
+          opacity: {
+            topValue: 0,
+            bottomValue: 1
+          }
+        }
+      },
+      {
+        top: 5400,
+        bottom: 6000,
+        easing: easeIn,
+        styles: {
+          opacity: {
+            topValue: 1,
+            bottomValue: 0
+          }
+        }
+      }
+    ],
+    sl5: [
+      {
+        top: 6100,
+        bottom: 7100,
+        easing: midSlow,
+        styles: {
+          translateY: {
+            topValue: 60,
+            bottomValue: -60
+          }
+        }
+      },
+      {
+        top: 6100,
+        bottom: 6700,
+        easing: ease,
+        styles: {
+          opacity: {
+            topValue: 0,
+            bottomValue: 1
           }
         }
       }
@@ -411,17 +612,30 @@ let disabled = new Map();
 
 const isAmong = (num, top, bottom) => num >= top && num <= bottom;
 
-const applyStyle = (element, styleName, value, unit = "px") => {
+const applyStyle = (element, styleName, value, px = "px", deg="deg", size="") => {
   if (styleName === "translateY") {
     // eslint-disable-next-line no-param-reassign
-    element.style.transform = `translateY(${value}${unit})`;
+    element.style.transform = `translateY(${value}${px})`;
     return;
   }
   if (styleName === "translateX") {
     // eslint-disable-next-line no-param-reassign
-    element.style.transform = `translateX(${value}${unit})`;
+    element.style.transform = `translateX(${value}${px})`;
     return;
   }
+  if (styleName === "scaleX") {
+    element.style.transform = `scaleX(${value}${size})`;
+    return;
+  }
+  if (styleName === "scaleY") {
+    element.style.transform = `scaleY(${value}${size})`;
+    return;
+  }
+  if (styleName === "scale") {
+    element.style.transform = `scaleY(${value}${size})`;
+    return;
+  }
+
   // eslint-disable-next-line no-param-reassign
   element.style[styleName] = value;
 };
@@ -602,7 +816,6 @@ export default {
       ]
     }
   },
-  watch: {},
   mounted() {
     this.init();
     window.addEventListener("scroll", this.onScroll);
@@ -614,9 +827,10 @@ export default {
     init() {
       this.initAnimation();
     },
+    // 애니메이션 초기화
     initAnimation() {
       // Sticky Conainer 의 높이를 설정함.
-      this.$refs["sticky-container"].style.height = `${def.height}px`;
+      this.$refs["sticky-container"].style.height = `${height}px`;
 
       // disabled, enabled 를 비움.
       disabled.clear();
@@ -646,18 +860,18 @@ export default {
       // 임의로 스크롤 이벤트 핸들러를 한 번 실행시킴.
       this.onScroll();
     },
-    applyStyles(currentPos, refname, styles, r, unit = "px") {
+    applyStyles(currentPos, refname, styles, r, px = "px", deg="deg",size="") {
       for (const style of Object.keys(styles)) {
-        const {topValue, bottomValue} = styles[style];
+        const { topValue, bottomValue } = styles[style];
         const calc = (bottomValue - topValue) * r + topValue;
-        applyStyle(this.$refs[refname], style, calc, unit);
+        applyStyle(this.$refs[refname], style, calc, px, deg, size);
       }
     },
     applyAllAnimation(currentPos, refname) {
       const animations = def.animations[refname];
       if (!animations) return;
       for (const animation of animations) {
-        const {top: a_top, bottom: a_bottom, easing, styles} = animation;
+        const { top: a_top, bottom: a_bottom, easing, styles } = animation;
         const isIn = isAmong(currentPos, a_top, a_bottom);
         // 만약 애니메이션이 새롭게 들어갈 때 혹은 나갈때 enabled 설정
         if (isIn) {
@@ -700,7 +914,7 @@ export default {
 
       // enabled 순회하면서 헤제할 요소를 체크
       enabled.forEach((obj, refname) => {
-        const {top, bottom, topStyle, bottomStyle} = obj;
+        const { top, bottom, topStyle, bottomStyle } = obj;
         // console.log(`${top}, ${bottom}, ${topStyle}, ${bottomStyle}`);
         // 범위 밖에 있다면
         if (!isAmong(currentPos, top, bottom)) {
@@ -734,47 +948,8 @@ export default {
           this.applyAllAnimation(currentPos, refname);
         }
       });
-    },
-    handleScroll(e){
-      console.log(e)
-      this.scrollPosition = e;
-      if(this.scrollPosition===0){
-        window.location.reload()
-      }
-      if(this.scrollPosition === 100) {
-        console.log("hello")
-        document.getElementById("hornSmile").classList.add("emoji1")
-
-      }else if( this.scrollPosition === 200){
-        document.getElementById("nerd").classList.add("emoji1")
-        console.log("down")
-      }else if( this.scrollPosition === 1000){
-        document.getElementById("funny").classList.add("emoji2")
-        console.log("down")
-      }else if( this.scrollPosition === 1300){
-        document.getElementById("angry").classList.add("emoji1")
-        console.log("down")
-      }else if( this.scrollPosition === 1600){
-        document.getElementById("wink").classList.add("emoji1")
-        console.log("down")
-      }else if( this.scrollPosition === 1700){
-        document.getElementById("hearteye").classList.add("emoji2")
-        console.log("down")
-      }
-      else if( this.scrollPosition === 2500){
-        document.getElementById("second-box").classList.add("Second-box1")
-      }
-      else if( this.scrollPosition === 3300){
-        document.getElementById("second-box").classList.add("Second-box2")
-      }
-      else if( this.scrollPosition === 4000){
-        document.getElementById("second-box").classList.add("Second-box3")
-      }else if( this.scrollPosition === 4600){
-        document.getElementById("second-box").classList.add("Second-box4")
-      }
     }
-  },
-
+  }
 
 }
 </script>
@@ -815,26 +990,7 @@ body{
   margin: 0 auto;
   border-radius: 30px;
 }
-.Second-box1{
-  width: 100%;
-  background-color: rgb(98, 167, 248);
-  transition: all ease 2s 0s;
-}
-.Second-box2{
-  width: 100%;
-  background-color: #9070FC;
-  transition: all ease 2s 0s;
-}
-.Second-box3{
-  width: 100%;
-  background-color: #FFD24E;
-  transition: all ease 2s 0s;
-}
-.Second-box4{
-  width: 90vw;
-  background-color: #FFD24E;
-  transition: all ease 2s 0s;
-}
+
 .Third-box{
   width: 100%;
   background: #936DFC;
@@ -931,7 +1087,7 @@ body{
   transition-timing-function: ease-in-out;
 }
 
-/*=============================================================================================*/
+/*===============================animation style=================================================*/
 .sticky {
   position: sticky;
   top: 0;
