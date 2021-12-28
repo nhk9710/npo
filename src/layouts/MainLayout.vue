@@ -1,9 +1,6 @@
 <template>
-  <q-layout view="lHr lpR fFf"  >
+  <q-layout view="hHh lpR fFf"  >
 
-    <q-header  class="text-white" style="background-color: #9070FC">
-     <q-toolbar></q-toolbar>
-    </q-header>
 
 
     <q-page-container>

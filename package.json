@@ -17,6 +17,7 @@
     "quasar": "^1.0.0",
     "swiper": "^5.3.7",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-scrollmagic": "^1.2.0",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
